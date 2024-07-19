@@ -1,0 +1,24 @@
+const express = require("express");
+const app = express();
+const secret_key = "RmosPDKS";
+const port=9999
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json());
+app.get("/api/token", (res) => {
+  const token = jwt.sign(secret_key,{expiressIn:'30'});
+
+  res.status(200).json(token);
+});
+
+app.post("/api/tokenal",(req,res)=>{
+              const geltoken= req.body.token;
+              console.log(geltoken)
+
+              res.status(200).json(geltoken);
+})
+
+app.listen(port,() => {
+  console.log(`API http://localhost:3000 üzerinde çalışıyor.`);
+});
